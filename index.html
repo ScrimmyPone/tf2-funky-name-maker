@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TF2 Funky Special Character Name Tag Generator / Maker</title>
+<!--
+	Open Source Project
+	Released under MIT / X11 License
+	Official Git Repo: https://github.com/ScrimmyPone/tf2-funky-name-maker
+	Created by Scrimmy, but the majority of this was generated using Claude Sonnet 4.6
+	This is a fully self-contained HTML file, the only external asset is a font, which means
+	this can be used fully offline, it'll just fallback to a different font probably.
+-->
+
+    <meta name="keywords" content="tf2,team fortress 2, team, fortress, valve, funky, fun, fancy, fancy name, fun name, funky name, utf8, utf, special, characters, zalgo, stars, symbols, cool, cool name, name tag, description tag, generator, name generator, name maker, special characters, stars, smiley faces, smily faces, japanese, kanji, ascii, accents" />
+	<meta name="description" content="Turn your boring Team Fortress 2 weapon name into a cool funky name full of fancy ❊ รקєςเคl ♡ (special) characters so it stands out from the rest"/>
+	<meta name="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Team_Fortress_2_style_logo.svg/500px-Team_Fortress_2_style_logo.svg.png"/>
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="@ScrimmyPone"/>
+	<meta name="og:title" content="TF2 Funky Special Character Name Tag Generator / Maker"/>
+	<meta name="og:type" content="website"/>
+    <meta name="author" content="ScrimmyPone"/>
+    <meta name="og:site_name" content="TF2 Funky Special Character Name Tag Generator / Maker"/>
+    <meta name="theme-color" content="#ea5756"/>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --panel: #141414;
+    --border: #2a2a2a;
+    --accent: #cf6400;
+    --accent2: #e88c2a;
+    --green: #4caf50;
+    --red: #c0392b;
+    --text: #e0d8cc;
+    --muted: #7a7060;
+    --glow: rgba(207,100,0,0.35);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid noise background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(207,100,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(207,100,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 0.6rem;
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 0.2em;
+    padding: 2px 8px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--text);
+    text-shadow: 0 0 40px var(--glow);
+  }
+
+  h1 span { color: var(--accent); }
+
+  .tagline {
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  /* Panels */
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+
+  .panel-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .panel-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Input */
+  .input-row {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  input[type="text"]::placeholder { color: var(--muted); }
+
+  /* Buttons */
+  .btn {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    padding: 0.7rem 1.4rem;
+    transition: all 0.15s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .btn-ghost:hover { background: rgba(207,100,0,0.1); }
+
+  .btn-small {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.65rem;
+  }
+
+  /* Mode toggle */
+  .mode-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .mode-btn {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.2rem;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    transition: all 0.15s;
+    border-right: 1px solid var(--border);
+  }
+
+  .mode-btn:last-child { border-right: none; }
+  .mode-btn.active { background: var(--accent); color: #000; }
+  .mode-btn:not(.active):hover { background: rgba(207,100,0,0.1); color: var(--text); }
+
+  /* Character set grid */
+  .charset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .charset-card {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    user-select: none;
+  }
+
+  .charset-card:hover { border-color: var(--accent); background: rgba(207,100,0,0.05); }
+
+  .charset-card.selected {
+    border-color: var(--accent);
+    background: rgba(207,100,0,0.12);
+  }
+
+  .charset-card.selected::before {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    color: var(--accent);
+    font-size: 0.7rem;
+  }
+
+  .charset-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.3rem;
+  }
+
+  .charset-preview {
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Category label */
+  .cat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-label:first-child { margin-top: 0; }
+
+  /* Output */
+  .output-area {
+    background: #070707;
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.6rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .output-area::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(207,100,0,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .output-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    letter-spacing: 0.05em;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(207,100,0,0.4);
+    word-break: break-all;
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  .output-text.empty { color: var(--muted); font-size: 0.85rem; }
+
+  .output-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Variants */
+  .variants-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .variant-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #070707;
+    border: 1px solid var(--border);
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .variant-row:hover { border-color: var(--accent); }
+
+  .variant-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    flex-shrink: 0;
+    width: 80px;
+  }
+
+  .variant-text {
+    flex: 1;
+    font-size: 0.92rem;
+    color: var(--text);
+    word-break: break-all;
+  }
+
+  .variant-copy {
+    font-size: 0.65rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  .variant-row:hover .variant-copy { color: var(--accent); }
+
+  /* Char count */
+  .char-count {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+  .char-count.warn { color: #e67e22; }
+  .char-count.over { color: var(--red); }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(2rem);
+    background: var(--accent);
+    color: #000;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Select all / none */
+  .select-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Checkbox style for number/case options */
+  .check-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    width: fit-content;
+  }
+
+  .check-box {
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--border);
+    background: #0a0a0a;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s;
+  }
+
+  .check-row:hover .check-box { border-color: var(--accent); }
+
+  .check-box.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .check-box.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 9px;
+    color: #000;
+    line-height: 1;
+  }
+
+  .check-label {
+    font-size: 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  /* Generate row */
+  .generate-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .count-input {
+    width: 60px;
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    padding: 0.7rem 0.75rem;
+    text-align: center;
+    outline: none;
+  }
+
+  .count-input:focus { border-color: var(--accent); }
+
+  .count-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Character Browser ── */
+  .browser-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 1.5rem;
+  }
+
+  .browser-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+  }
+
+  .browser-divider-text {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .browser-controls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .browser-select {
+    flex: 1;
+    min-width: 200px;
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    padding: 0.65rem 0.85rem;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23cf6400' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .browser-select:focus { border-color: var(--accent); }
+
+  .browser-select optgroup {
+    color: var(--accent2);
+    background: #111;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  .browser-select option {
+    color: var(--text);
+    background: #0a0a0a;
+  }
+
+  .slider-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .slider-label {
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .slider-value {
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.7rem;
+    color: var(--accent);
+    min-width: 28px;
+    text-align: right;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: var(--border);
+    outline: none;
+    width: 80px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 13px;
+    height: 13px;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+  }
+
+  /* Character grid */
+  .char-browser-grid {
+    display: grid;
+    gap: 4px;
+    margin-top: 0.25rem;
+  }
+
+  .char-cell {
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    aspect-ratio: 1;
+    transition: all 0.12s;
+    position: relative;
+    user-select: none;
+    min-width: 0;
+    overflow: hidden;
+    line-height: 1;
+  }
+
+  .char-cell:hover {
+    border-color: var(--accent);
+    background: rgba(207,100,0,0.1);
+    z-index: 2;
+    transform: scale(1.1);
+  }
+
+  .char-cell.copied {
+    border-color: #4caf50;
+    background: rgba(76,175,80,0.18);
+    transform: scale(1.15);
+  }
+
+  .char-cell.copied::after {
+    content: '✓';
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    font-size: 8px;
+    color: #4caf50;
+    font-family: sans-serif;
+    line-height: 1;
+  }
+
+  .browser-empty {
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  /* Sub-section labels inside browser */
+  .subsection-label {
+    grid-column: 1 / -1;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 0 0.2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.1rem;
+  }
+
+  /* Sliders row */
+  .sliders-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    padding: 0.65rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <div class="header-badge">TF2 Funky Weapon Name Maker</div>
+    <h1>Name Tag <span>Forge</span></h1>
+    <p class="tagline">Transform weapon/cosmetic names using special character sets originally found <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3304832814" target="_BLANK">in this Steam Community guide (by itzstardust)</a></p>
+	<p class="tagline">This tool is open source, it was created by Scrimmy (DISCLAIMER: Partially made with Claude Sonnet 4.6 AI/LLM) and is <a href="https://github.com/ScrimmyPone/tf2-funky-name-maker" target="_BLANK">released under the MIT License on Github HERE.</a> It's a single self-contained HTML file which can be saved and even used offline.</p>
+  </header>
+
+	  <!-- Introduction -->
+  <div class="panel">
+    <div class="panel-title">What is this and how do I use it?</div>
+	<p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;">
+		This simple web tool is intended for <strong>Name Tags</strong> and <strong>Description Tags</strong> in the video game Team Fortress 2 made by Valve. 
+	</p>
+
+	<p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;">
+	At the bottom of the page, there's a <strong>Symbol Picker</strong> (similar to Windows' Character Map), where you can pick a character set and it'll show you all the characters and symbols available from the set (at the bottom of the list there's <strong>"All Symbols Combined"</strong> to see all the random symbols you can use - note the All Symbols group does not include the A-Z / 0-9 character variations, just things like smiley faces, certain japanese characters, various shapes and symbols, etc.).
+	</p>
+	
+  </div>
+
+<h5 style="color: #aa0000;">PLEASE BE AWARE: TF2 may render some symbols on this page differently than shown in your browser, and certain symbols may appear cut-off in-game. Please pay close attention to the preview in-game before confirming your name/description tag usage, I am not responsible if you waste a name tag because some of the symbols don't show up properly in-game.</h5>
+<br />
+
+  <!-- Weapon Name Input -->
+  <div class="panel">
+    <div class="panel-title">⚙ Weapon Name</div>
+    <div class="input-row">
+      <input type="text" id="weaponName" placeholder="e.g. The Infernal Engine" maxlength="120">
+    </div>
+    <label class="check-row" onclick="toggleOpt('uppercase')">
+      <div class="check-box checked" id="chk-uppercase"></div>
+      <span class="check-label">Convert letters to UPPERCASE</span>
+    </label>
+		<p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;">
+		Simply enter a name such as <strong>"My Cool Knife"</strong>, adjust the "Variants" to choose how many random versions of the name you'd like to generate, then click the <strong>"Forge Name"</strong> button, and you'll find a bunch of cool variants of your name such as <strong>"❋❊ ＭＹ ＣＯＯＬ ⓀⓃⒾⒻⒺ ✰"</strong> below, which you can simply click <strong>"Copy"</strong> on the right to copy it to your clipboard for pasting into a TF2 <strong>Name Tag / Description Tag</strong>.
+	</p>
+  </div>
+
+  <!-- Mode -->
+  <div class="panel">
+    <div class="panel-title">⚙ Character Set Mode</div>
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="mode-random" onclick="setMode('random')">🎲 Random</button>
+      <button class="mode-btn" id="mode-manual" onclick="setMode('manual')">✎ Manual Pick</button>
+    </div>
+    <p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;" id="mode-desc">
+      Randomly picks 1–2 character sets each time you generate.
+    </p>
+
+    <!-- Manual charset selector (hidden by default) -->
+    <div id="charset-selector" style="display:none; margin-top:1rem;">
+      <div class="select-controls">
+        <button class="btn btn-ghost btn-small" onclick="selectAll()">Select All</button>
+        <button class="btn btn-ghost btn-small" onclick="selectNone()">Clear</button>
+      </div>
+      <div id="charset-grid" class="charset-grid"></div>
+    </div>
+	
+	<p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;">
+		There's various other settings, for example you can manually pick which character set(s) to use, or you can change whether or not to add random symbols before/after the generated namex.
+	</p>
+  </div>
+
+  <!-- Options -->
+  <div class="panel">
+    <div class="panel-title">⚙ Symbol Decorations</div>
+    <p style="font-size:0.7rem; color:var(--muted); letter-spacing:0.05em;">1–2 random symbols will be added to the start and end of the name.</p>
+    <label class="check-row" onclick="toggleOpt('symbols')">
+      <div class="check-box checked" id="chk-symbols"></div>
+      <span class="check-label">Add decorative symbols</span>
+    </label>
+    <label class="check-row" onclick="toggleOpt('space')">
+      <div class="check-box checked" id="chk-space"></div>
+      <span class="check-label">Space between symbol and name</span>
+    </label>
+  </div>
+
+  <!-- Generate -->
+  <div class="panel">
+    <div class="panel-title">⚙ Generate</div>
+    <div class="generate-row">
+      <button class="btn btn-primary" onclick="generate()">⚡ FORGE NAME</button>
+      <span class="count-label">Variants:</span>
+      <input type="number" class="count-input" id="variantCount" value="5" min="1" max="20">
+      <button class="btn btn-ghost" onclick="generate()">↺ Re-roll</button>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div class="panel">
+    <div class="panel-title">⚔ Forged Results</div>
+    <div id="variants-container">
+      <div style="color: var(--muted); font-size:0.8rem; letter-spacing:0.05em; padding: 0.5rem 0;">
+        Enter a weapon name above and click FORGE NAME to generate.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copied!</div>
+
+<!-- ══════════════ CHARACTER BROWSER ══════════════ -->
+<div class="page" style="padding-top: 0;">
+  <div class="browser-divider">
+    <div class="browser-divider-line"></div>
+    <div class="browser-divider-text">⚿ Character &amp; Symbol Browser</div>
+    <div class="browser-divider-line"></div>
+  </div>
+
+    <p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;">
+	Once you've selected a character set, simply scroll down and click on the symbol you want to use, it'll copy it to your clipboard which you can then paste into a text editor like Notepad (Windows) / TextEdit (macOS) while you're editing your generated name to include your preferred symbols and spacing.
+	</p>
+	<p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; letter-spacing:0.05em;">
+	You can adjust the font size and number of columns to make it easier to see the symbols if you're having trouble figuring out what they're supposed to be.
+	</p>
+	<br/>
+
+  <div class="panel">
+    <div class="panel-title">📖 Browse &amp; Copy Characters</div>
+
+    <div class="browser-controls">
+      <select class="browser-select" id="browserSelect" onchange="onBrowserSelect()">
+        <option value="">— Select a set to browse —</option>
+        <optgroup label="COOL CATEGORY">
+          <option value="cs:bubbles">Light Text Bubbles</option>
+          <option value="cs:superscript">Superscript</option>
+          <option value="cs:fullwidth">Full Width</option>
+          <option value="cs:cyrillic">Cyrillic</option>
+          <option value="cs:japanese">Japanese</option>
+          <option value="cs:arabic">Arabic</option>
+          <option value="cs:inverted">Inverted</option>
+          <option value="cs:moderngreek">Modern Greek</option>
+          <option value="cs:asian">Asian Characters</option>
+          <option value="cs:devilish">Devilish</option>
+          <option value="cs:curvy">Curvy</option>
+          <option value="cs:mathstyle">Math Style</option>
+          <option value="cs:yatagan">Yatagan</option>
+          <option value="cs:soviet">Soviet</option>
+        </optgroup>
+        <optgroup label="FANCY CATEGORY">
+          <option value="cs:wizard">Wizard</option>
+          <option value="cs:lefthanded">Lefthanded</option>
+          <option value="cs:monoupper">Mono Upper</option>
+          <option value="cs:funky">Funky</option>
+        </optgroup>
+        <optgroup label="GLITCH CATEGORY">
+          <option value="cs:fairytale">Fairytale</option>
+          <option value="cs:ancient1">Ancient Style 1</option>
+          <option value="cs:acuteaccents">Acute Accents</option>
+          <option value="cs:metalumlauts">Metal Umlauts</option>
+          <option value="cs:delta">Delta</option>
+          <option value="cs:stroked">Stroked</option>
+        </optgroup>
+        <optgroup label="SYMBOLS">
+          <option value="sym:hearts">Hearts</option>
+          <option value="sym:stars">Stars &amp; Asterisks</option>
+          <option value="sym:smileys">Smiley Faces</option>
+          <option value="sym:flowers">Flowers</option>
+          <option value="sym:weapons">Weapons &amp; Tools</option>
+          <option value="sym:arrows">Arrows</option>
+          <option value="sym:chess">Chess Pieces</option>
+          <option value="sym:cards">Card Suits &amp; Dice</option>
+          <option value="sym:zodiac">Zodiac &amp; Planets</option>
+          <option value="sym:music">Musical Notes</option>
+          <option value="sym:weather">Weather</option>
+          <option value="sym:religion">Religion &amp; Crosses</option>
+          <option value="sym:checkmarks">Checkmarks &amp; X Marks</option>
+          <option value="sym:bullets">Bullet &amp; List Symbols</option>
+          <option value="sym:circles">Circle Symbols</option>
+          <option value="sym:squares">Squares &amp; Rectangles</option>
+          <option value="sym:triangles">Triangle Symbols</option>
+          <option value="sym:lines">Line Symbols</option>
+          <option value="sym:math">Mathematical Symbols</option>
+          <option value="sym:currency">Currency Symbols</option>
+          <option value="sym:trademark">Trademark &amp; Copyright</option>
+          <option value="sym:technical">Technical Symbols</option>
+          <option value="sym:hands">Hand Symbols</option>
+          <option value="sym:gender">Gender Symbols</option>
+          <option value="sym:recycle">Recycle Symbols</option>
+          <option value="sym:numbers_circle">Circled Numbers</option>
+          <option value="sym:fractions">Fractions</option>
+          <option value="sym:allsymbols">★ All Symbols Combined</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Sliders -->
+    <div class="sliders-row">
+      <div class="slider-group">
+        <span class="slider-label">Columns</span>
+        <input type="range" id="colSlider" min="4" max="20" value="8" oninput="updateBrowserLayout()">
+        <span class="slider-value" id="colVal">8</span>
+      </div>
+      <div class="slider-group">
+        <span class="slider-label">Font Size</span>
+        <input type="range" id="sizeSlider" min="16" max="64" value="34" oninput="updateBrowserLayout()">
+        <span class="slider-value" id="sizeVal">34px</span>
+      </div>
+    </div>
+
+    <!-- Grid output -->
+    <div id="charBrowserGrid" class="char-browser-grid">
+      <div class="browser-empty">Select a character set or symbol group above to browse.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// CHARACTER SETS
+// ─────────────────────────────────────────────
+
+const CHARSETS = [
+  // === COOL CATEGORY ===
+  {
+    id: 'bubbles', name: 'Light Bubbles', category: 'Cool',
+    lower: 'ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ',
+    upper: 'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ',
+    nums:  '①②③④⑤⑥⑦⑧⑨⓪'
+  },
+  {
+    id: 'superscript', name: 'Superscript', category: 'Cool',
+    lower: 'ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖqʳˢᵗᵘᵛʷˣʸᶻ',
+    upper: 'ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾQᴿˢᵀᵁⱽᵂˣʸᶻ',
+    nums:  '¹²³⁴⁵⁶⁷⁸⁹⁰'
+  },
+  {
+    id: 'fullwidth', name: 'Full Width', category: 'Cool',
+    lower: 'ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ',
+    upper: 'ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ',
+    nums:  '１２３４５６７８９０'
+  },
+  {
+    id: 'cyrillic', name: 'Cyrillic', category: 'Cool',
+    lower: 'абcдёfgнїjкгѫпѳpфя$тцѵщжчз',
+    upper: 'АБCДЄFGHЇJКГѪЙѲPФЯ$TЦѴШЖЧЗ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'japanese', name: 'Japanese', category: 'Cool',
+    lower: '卂乃匚ᗪ乇千Ꮆ卄丨ﾌҜㄥ爪几ㄖ卩Ɋ尺丂ㄒㄩᐯ山乂ㄚ乙',
+    upper: '卂乃匚ᗪ乇千Ꮆ卄丨ﾌҜㄥ爪几ㄖ卩Ɋ尺丂ㄒㄩᐯ山乂ㄚ乙',
+    nums:  '1234567890'
+  },
+  {
+    id: 'arabic', name: 'Arabic', category: 'Cool',
+    lower: 'ค๒ς๔єŦﻮђเןкl๓ภ๏קợгรtยשฬץאz',
+    upper: 'ค๒ς๔єŦﻮђเןкl๓ภ๏קợгรtยשฬץאz',
+    nums:  '1234567890'
+  },
+  {
+    id: 'inverted', name: 'Inverted', category: 'Cool',
+    lower: 'ɐqɔpǝɟƃɥıɾʞןɯuodqɹsʇuʌʍxʎz',
+    upper: '∀ᗺƆᗡƎⅎ⅁HIſꓘ˥WNOԀტᴚS⊥∩ΛMX⅄Z',
+    nums:  'Ɩᘔɛߤ59ㄥ860'
+  },
+  {
+    id: 'moderngreek', name: 'Modern Greek', category: 'Cool',
+    lower: 'ΛBᄃDΣFGΉIJKᄂMПӨPQЯƨƬЦVЩXYZ',
+    upper: 'ΛBᄃDΣFGΉIJKᄂMПӨPQЯƨƬЦVЩXYZ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'asian', name: 'Asian Characters', category: 'Cool',
+    lower: 'ﾑ乃ᄃり乇ｷムんﾉﾌズﾚﾶ刀のｱゐ尺丂ｲひ√WﾒﾘZ',
+    upper: 'ﾑ乃ᄃり乇ｷムんﾉﾌズﾚﾶ刀のｱゐ尺丂ｲひ√WﾒﾘZ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'devilish', name: 'Devilish', category: 'Cool',
+    lower: 'αႦƈԃҽϝɠԋιʝƙʅɱɳσρϙɾʂƚυʋɯxყȥ',
+    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'curvy', name: 'Curvy', category: 'Cool',
+    lower: 'ᗩᗷᑕᗪEᖴGᕼIᒍKᒪᗰᑎOᑭᑫᖇᔕTᑌᐯᗯ᙭Yᘔ',
+    upper: 'ᗩᗷᑕᗪEᖴGᕼIᒍKᒪᗰᑎOᑭᑫᖇᔕTᑌᐯᗯ᙭Yᘔ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'mathstyle', name: 'Math Style', category: 'Cool',
+    lower: 'αв¢∂єƒgнιנкℓмησρqяѕтυνωχуz',
+    upper: 'αв¢∂єƒgнιנкℓмησρqяѕтυνωχуz',
+    nums:  '1234567890'
+  },
+  {
+    id: 'yatagan', name: 'Yatagan', category: 'Cool',
+    lower: 'ค๖¢໓ēfງhiວklm๓ຖ໐p๑rŞtนงຟxฯຊ',
+    upper: 'ค๖¢໓ēfງhiວklm๓ຖ໐p๑rŞtนงຟxฯຊ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'soviet', name: 'Soviet', category: 'Cool',
+    lower: 'ӓѣҁdЭfgћїjКlmђѳpqГsҭЧѵШxӳz',
+    upper: 'ДѢҀDЗFGњIJКLMЙФPQЯSҬЦVШЖӲZ',
+    nums:  '1234567890'
+  },
+  // === FANCY CATEGORY ===
+  {
+    id: 'wizard', name: 'Wizard', category: 'Fancy',
+    lower: 'ǟɮƈɖɛʄɢɦɨʝӄʟʍռօքզʀֆȶʊʋաӽʏʐ',
+    upper: 'ǟɮƈɖɛʄɢɦɨʝӄʟʍռօքզʀֆȶʊʋաӽʏʐ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'lefthanded', name: 'Lefthanded', category: 'Fancy',
+    lower: 'αɓ૮∂εƒɠɦเʝҡℓɱɳσρφ૨รƭµѵωאყƶ',
+    upper: 'αɓ૮∂εƒɠɦเʝҡℓɱɳσρφ૨รƭµѵωאყƶ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'monoupper', name: 'Mono Upper', category: 'Fancy',
+    lower: 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘQʀꜱᴛᴜᴠᴡxʏᴢ',
+    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'funky', name: 'Funky', category: 'Fancy',
+    lower: 'αв¢∂єƒgнιנкℓмησρqяѕтυνωχуz',
+    upper: 'αв¢∂єƒgнιנкℓмησρqяѕтυνωχуz',
+    nums:  '1234567890'
+  },
+  // === GLITCH CATEGORY ===
+  {
+    id: 'fairytale', name: 'Fairytale', category: 'Glitch',
+    lower: 'Ꭷᏸፈᎄ᎛Ꭶᎆ᎒ᎵᎰᎶᎭᎇ᎑ᎷᎾᎤᎢᎥᎦᎼ᎙᎗ጀᎩፚ',
+    upper: 'Ꭷᏸፈᎄ᎛Ꭶᎆ᎒ᎵᎰᎶᎭᎇ᎑ᎷᎾᎤᎢᎥᎦᎼ᎙᎗ጀᎩፚ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'ancient1', name: 'Ancient Style 1', category: 'Glitch',
+    lower: 'ꍏꌃꉓꀸꍟꎇꁅꃅꀤꀭꀘ꒒ꂵꈤꂦꉣꆰꋪꌗ꓄ꀎꃴꅏꊼꌩꁴ',
+    upper: 'ꍏꌃꉓꀸꍟꎇꁅꃅꀤꀭꀘ꒒ꂵꈤꂦꉣꆰꋪꌗ꓄ꀎꃴꅏꊼꌩꁴ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'acuteaccents', name: 'Acute Accents', category: 'Glitch',
+    lower: 'ábćdéfǵhíjḱĺḿńőṕqŕśtúvẃxӳź',
+    upper: 'ÁBĆDÉFǴHíJḰĹḾŃŐṔQŔśTŰVẂXӲŹ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'metalumlauts', name: 'Metal Umlauts', category: 'Glitch',
+    lower: 'äḅċḋëḟġḧïjḳḷṁṅöṗqṛṡẗüṿẅẍÿż',
+    upper: 'ÄḄĊḊЁḞĠḦЇJḲḶṀṄÖṖQṚṠṪÜṾẄẌŸŻ',
+    nums:  '1234567890'
+  },
+  {
+    id: 'delta', name: 'Delta', category: 'Glitch',
+    lower: 'ΔβĆĐ€₣ǤĦɨĴҜŁΜŇØƤΩŘŞŦỮVŴЖ¥Ž',
+    upper: 'ΔβĆĐ€₣ǤĦɨĴҜŁΜŇØƤΩŘŞŦỮVŴЖ¥Ž',
+    nums:  '1234567890'
+  },
+  {
+    id: 'stroked', name: 'Stroked', category: 'Glitch',
+    lower: 'Ⱥƀȼđɇfǥħɨɉꝁłmnøᵽꝗɍsŧᵾvwxɏƶ',
+    upper: 'ȺɃȻĐɆFǤĦɨɈꝀŁMNØᵽꝖɌSŦᵾVWXɎƵ',
+    nums:  '1234567890'
+  }
+];
+
+// ─────────────────────────────────────────────
+// SYMBOL POOLS (from guide)
+// ─────────────────────────────────────────────
+
+const SYMBOLS = [
+  // Hearts
+  '♥','♡','❤','❥','❣','❦','❧','ღ',
+  // Stars
+  '★','☆','✩','✴','✳','✪','✫','✬','✭','✮','✯','✰','⭐','✦','✧','✶','✡','❂','✷','✸','✼','✽','❃','❉','✢','✣','✤','✥','❊','❋','✺','❇','❈',
+  // Smileys
+  '㋡','㋛','☺','☻','〠','シ','ッ','ツ','ヅ','Ü','Ѷ','⍡','⍢','⍣','⍤',
+  // Flower
+  '✽','✾','✿','❀','❁','❃','❊','❋','✣','✤','⚜','⚘','ꕤ','ꕥ','☘',
+  // Weapons/tools
+  '⚔','⚙','⚖','⛏','⚒','⚓','⚗',
+  // Bullet
+  '•','‣','►','◄','☚','☛','☟','☝','◈','∴','∵','∷','❂','☢','⊗','⚫','⚪','➡','➼',
+  // Religion/cross
+  '✚','✛','✜','✝','✞','✟','†','☥','✙','✡','⚜',
+  // Checkmarks/X
+  '☑','✓','✔','☒','✕','❌','✗','✘','✖','❎',
+  // Chess
+  '♔','♕','♖','♗','♘','♙','♚','♛','♜','♝','♞','♟',
+  // Sun/Moon
+  '☼','☀','☉','☾','☽','☄','☪','⛅',
+  // Music
+  '♩','♪','♫','♬','♮','♯',
+  // Weather
+  '❅','❆','❄','♨','⛄','⛇',
+  // Misc cool
+  '⚡','☢','☣','⚠','♻','⚝','⍟','≛','⍣','٭','⁎','⁑','✱','✲',
+  // Zodiac
+  '♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','⊕',
+  // Office
+  '✂','✆','✉','✍','✎','✏','✐','✑','✒',
+  // Card suits
+  '♠','♥','♦','♣','♤','♧','♡','♢',
+];
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+
+let mode = 'random';
+let opts = { uppercase: true, symbols: true, space: true };
+let selectedCharsets = new Set(CHARSETS.map(c => c.id));
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+
+function init() {
+  buildCharsetGrid();
+}
+
+function buildCharsetGrid() {
+  const grid = document.getElementById('charset-grid');
+  grid.innerHTML = '';
+  const categories = [...new Set(CHARSETS.map(c => c.category))];
+
+  categories.forEach(cat => {
+    const label = document.createElement('div');
+    label.className = 'cat-label';
+    label.style.gridColumn = '1 / -1';
+    label.textContent = `— ${cat} —`;
+    grid.appendChild(label);
+
+    CHARSETS.filter(c => c.category === cat).forEach(cs => {
+      const card = document.createElement('div');
+      card.className = 'charset-card' + (selectedCharsets.has(cs.id) ? ' selected' : '');
+      card.id = 'cs-' + cs.id;
+      card.innerHTML = `<div class="charset-name">${cs.name}</div><div class="charset-preview">${cs.lower.substring(0,10)}...</div>`;
+      card.onclick = () => toggleCharset(cs.id);
+      grid.appendChild(card);
+    });
+  });
+}
+
+// ─────────────────────────────────────────────
+// UI CONTROLS
+// ─────────────────────────────────────────────
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('mode-random').classList.toggle('active', m === 'random');
+  document.getElementById('mode-manual').classList.toggle('active', m === 'manual');
+  document.getElementById('charset-selector').style.display = m === 'manual' ? 'block' : 'none';
+  document.getElementById('mode-desc').textContent = m === 'random'
+    ? 'Randomly picks 1–2 character sets each time you generate.'
+    : 'Select one or more character sets to use (all words will use the same set per variant).';
+}
+
+function toggleCharset(id) {
+  if (selectedCharsets.has(id)) {
+    selectedCharsets.delete(id);
+    document.getElementById('cs-' + id).classList.remove('selected');
+  } else {
+    selectedCharsets.add(id);
+    document.getElementById('cs-' + id).classList.add('selected');
+  }
+}
+
+function selectAll() {
+  CHARSETS.forEach(c => {
+    selectedCharsets.add(c.id);
+    document.getElementById('cs-' + c.id).classList.add('selected');
+  });
+}
+
+function selectNone() {
+  CHARSETS.forEach(c => {
+    selectedCharsets.delete(c.id);
+    document.getElementById('cs-' + c.id).classList.remove('selected');
+  });
+}
+
+function toggleOpt(key) {
+  opts[key] = !opts[key];
+  const el = document.getElementById('chk-' + key);
+  el.classList.toggle('checked', opts[key]);
+}
+
+// ─────────────────────────────────────────────
+// CORE CONVERSION
+// ─────────────────────────────────────────────
+
+const ALPHA_LOWER = 'abcdefghijklmnopqrstuvwxyz';
+const ALPHA_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const NUMS = '1234567890';
+
+function convertChar(ch, charset) {
+  const lower = ch.toLowerCase();
+  const upper = ch.toUpperCase();
+
+  // number
+  const ni = NUMS.indexOf(ch);
+  if (ni !== -1 && charset.nums) {
+    const chars = [...charset.nums];
+    return chars[ni] ?? ch;
+  }
+
+  // uppercase letter
+  const ui = ALPHA_UPPER.indexOf(upper);
+  if (ui !== -1) {
+    const isUpper = ch === upper && ch !== lower; // actually uppercase letter
+    if (isUpper && charset.upper) {
+      const chars = [...charset.upper];
+      return chars[ui] ?? ch;
+    }
+    if (!isUpper && charset.lower) {
+      const chars = [...charset.lower];
+      return chars[ui] ?? ch;
+    }
+  }
+
+  return ch; // pass through (space, punctuation, etc.)
+}
+
+function convertText(text, charset, forceUpper) {
+  const t = forceUpper ? text.toUpperCase() : text;
+  return [...t].map(ch => convertChar(ch, charset)).join('');
+}
+
+function pickRandom(arr, n = 1) {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, n);
+}
+
+function buildName(rawName, charset) {
+  const converted = convertText(rawName, charset, opts.uppercase);
+  if (!opts.symbols) return converted;
+
+  const numStart = Math.floor(Math.random() * 2) + 1; // 1 or 2
+  const numEnd = Math.floor(Math.random() * 2) + 1;
+  const startSyms = pickRandom(SYMBOLS, numStart).join('');
+  const endSyms = pickRandom(SYMBOLS, numEnd).join('');
+  const sep = opts.space ? ' ' : '';
+
+  return startSyms + sep + converted + sep + endSyms;
+}
+
+// ─────────────────────────────────────────────
+// GENERATE
+// ─────────────────────────────────────────────
+
+function generate() {
+  const raw = document.getElementById('weaponName').value.trim();
+  if (!raw) {
+    showToast('Enter a weapon name first!');
+    return;
+  }
+
+  const count = Math.max(1, Math.min(20, parseInt(document.getElementById('variantCount').value) || 5));
+
+  let pool;
+  if (mode === 'random') {
+    pool = CHARSETS;
+  } else {
+    pool = CHARSETS.filter(c => selectedCharsets.has(c.id));
+    if (pool.length === 0) {
+      showToast('Select at least one character set!');
+      return;
+    }
+  }
+
+  const variants = [];
+  for (let i = 0; i < count; i++) {
+    // Pick 1 or 2 charsets; if 2, apply first to first word group, second to second
+    const numSets = mode === 'random' ? (Math.random() < 0.4 ? 2 : 1) : 1;
+    const chosen = pickRandom(pool, Math.min(numSets, pool.length));
+
+    let result;
+    if (chosen.length === 2) {
+      // Split on space and alternate charsets
+      const words = raw.split(' ');
+      const mid = Math.ceil(words.length / 2);
+      const part1 = words.slice(0, mid).join(' ');
+      const part2 = words.slice(mid).join(' ');
+      const c1 = convertText(part1, chosen[0], opts.uppercase);
+      const c2 = convertText(part2, chosen[1], opts.uppercase);
+      const combined = part2 ? c1 + ' ' + c2 : c1;
+
+      if (!opts.symbols) {
+        result = combined;
+      } else {
+        const numStart = Math.floor(Math.random() * 2) + 1;
+        const numEnd = Math.floor(Math.random() * 2) + 1;
+        const startSyms = pickRandom(SYMBOLS, numStart).join('');
+        const endSyms = pickRandom(SYMBOLS, numEnd).join('');
+        const sep = opts.space ? ' ' : '';
+        result = startSyms + sep + combined + sep + endSyms;
+      }
+    } else {
+      result = buildName(raw, chosen[0]);
+    }
+
+    const labelParts = chosen.map(c => c.name);
+    variants.push({ text: result, label: labelParts.join(' + ') });
+  }
+
+  renderVariants(variants);
+}
+
+function renderVariants(variants) {
+  const container = document.getElementById('variants-container');
+  container.innerHTML = '';
+
+  variants.forEach((v, i) => {
+    const row = document.createElement('div');
+    row.className = 'variant-row';
+    row.title = 'Click to copy';
+    row.innerHTML = `
+      <div class="variant-label">${v.label}</div>
+      <div class="variant-text">${v.text}</div>
+      <div class="variant-copy">Copy</div>
+    `;
+    row.onclick = () => copyText(v.text);
+    container.appendChild(row);
+  });
+
+  // char count note
+  if (variants.length > 0) {
+    const note = document.createElement('div');
+    note.className = 'char-count';
+    note.textContent = 'Click any result to copy · TF2 name tag limit: 40 chars';
+    container.appendChild(note);
+  }
+}
+
+// ─────────────────────────────────────────────
+// COPY / TOAST
+// ─────────────────────────────────────────────
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('Copied!')).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Copied!');
+  });
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ─────────────────────────────────────────────
+// KEYBOARD
+// ─────────────────────────────────────────────
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.activeElement.id === 'weaponName') generate();
+});
+
+init();
+
+// ─────────────────────────────────────────────
+// CHARACTER BROWSER DATA
+// ─────────────────────────────────────────────
+
+const SYMBOL_SETS = {
+  hearts:         { label: 'Hearts', chars: ['♥','♡','❤','❥','❣','❦','❧','დ','ღ','۵','ლ','ও','ლ'] },
+  stars:          { label: 'Stars & Asterisks', chars: ['★','☆','⚝','✩','✴','✳','☄','✪','✫','✬','✭','✮','✯','✰','⭐','⛤','⛦','⛧','✦','✧','✶','✡','☪','❂','✷','✸','⋆','⍟','≛','⍣','٭','*','⁎','⁑','✱','✲','✼','✽','❃','❉','⧆','✢','✣','✤','✥','✳','❊','❋','✺','∗','⊛','✨','❇','❈'] },
+  smileys:        { label: 'Smiley Faces', chars: ['㋡','㋛','☺','☻','〠','シ','ッ','ツ','ヅ','Ü','Ѷ','〲','〴','ジ','ت','ｼ','ﾂ','ﭢ','⍡','ꌇ','⍢','⍣','⍤','Ӫ','ӫ','유','옻','옺'] },
+  flowers:        { label: 'Flowers', chars: ['✽','✾','✿','❀','❁','❃','❊','❋','✣','✤','⚜','⚘','ꕤ','ꕥ','☘'] },
+  weapons:        { label: 'Weapons & Tools', chars: ['⚔','⚙','⚖','⛏','⛐','⛑','⛒','⚗','⛓','⚒','⚓'] },
+  arrows:         { label: 'Arrows', chars: ['←','↑','→','↓','↚','↛','↜','↝','↞','↟','↠','↡','↢','↣','↤','↥','↦','↧','↨','↫','↬','↭','↮','↯','↰','↱','↲','↳','↴','↵','↶','↷','↸','↹','↺','↻','⇄','⇅','⇆','⇇','⇈','⇉','⬆','↗','➡','↘','⬇','↙','⬅','↖','↕','↔','↩','↪','⤴','⤵','⇊','⇍','⇎','⇏','⇐','⇑','⇒','⇓','⇔','⇕','⇖','⇗','⇘','⇙','⇚','⇛','⇜','⇝','⇞','⇟','⇠','⇡','⇢','⇣','⇤','⇥','⇦','⇧','⇨','⇩','⇱','⇲','⇳','⇴','⇵','⇶','⇷','⇸','⇹','⇺','⇻','⇼','⇽','⇾','⇿','➔','➘','➙','➚','➛','➜','➝','➞','➟','➠','➢','➣','➤','➥','➦','➧','➨','➩','➪','➫','➬','➭','➮','➯','➱','➲','➳','➴','➵','➶','➷','➸','➹','➺','➻','➼','➽','➾','⟰','⟱','⟲','⟳','⟴','⟵','⟶','⟷','⟸','⟹','⟺','⟻','⟼','⟽','⟾','⟿'] },
+  chess:          { label: 'Chess Pieces', chars: ['♔','♕','♖','♗','♘','♙','♚','♛','♜','♝','♞','♟'] },
+  cards:          { label: 'Card Suits & Dice', chars: ['♠','♥','♦','♣','♤','♧','♡','♢','⚀','⚁','⚂','⚃','⚄','⚅'] },
+  zodiac:         { label: 'Zodiac & Planets', chars: ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','☉','☼','☀','☽','◯','♀','⊕','♂','⚳','♃','♄','♅','♆','♇','༄'] },
+  music:          { label: 'Musical Notes', chars: ['♩','♪','♫','♬','♮','♯'] },
+  weather:        { label: 'Weather', chars: ['☼','☀','☉','☁','⛅','⛈','☂','☔','☇','☈','☃','⛄','⛇','☄','❅','❆','ϟ','❄','♨'] },
+  religion:       { label: 'Religion & Crosses', chars: ['☸','✚','✛','✜','✝','ॐ','✞','✟','†','☥','☪','✙','☦','☨','☩','♁','♆','☬','✡','ﷲ'] },
+  checkmarks:     { label: 'Checkmarks & X Marks', chars: ['☑','✓','✔','✅','√','☒','☐','✕','❎','✗','✘','✖','❌'] },
+  bullets:        { label: 'Bullet & List Symbols', chars: ['•','‣','⁃','⁌','⁍','◘','◦','⦾','⦿','✓','✕','✖','►','◄','☚','☛','☟','☝','❃','❀','✿','❁','✾','◈','∴','∵','∷','❂','☢','⊗','⚫','⚪','➡','➼'] },
+  circles:        { label: 'Circle Symbols', chars: ['○','◌','☮','◍','●','◐','◑','◒','◓','◔','◕','◖','◗','◙','◚','◛','◠','◡','◯','◴','◵','◶','◷','⚆','⚇','⚈','⚉','⚪','⚫','⚬','✪','❂','❍','⟟','⦲','⦵','⦶','∅','⦷','⦸','⦹','⦺','⦻','⦾','⦿','⧂','⧃','⧇','⧲','⧳','⨀','⨁','⨂','⫱','⬤','⭕'] },
+  squares:        { label: 'Squares & Rectangles', chars: ['■','□','▢','▣','▤','▥','▦','▧','▨','▩','▪','▫','◧','◨','◩','◪','◫','◰','◱','◲','◳','◻','◼','◽','◾','⚿','⛋','⛝','⛞','⛶','⬒','⬓','⬔','⬕','⬚','⬛','⬜','▁','▂','▃','▄','▅','▆','▇','▉','▊','▋','█','▌','▐','▍','▎','▏','▕','░','▒','▓','❏','❐','❑','❒','▀','▔','▬','▭','▮','▯','☰','☲','☱','☴','☵','☶','☳','☷','▰','▱','◊','◈','◇','◆','⎔','⎚','☖','☗'] },
+  triangles:      { label: 'Triangle Symbols', chars: ['▶','◀','▼','▲','△','◮','◸','◹','◺','◿','⛛','⟁','⧊','⫷','⫸','⋖','◬','≜','⑅','▴','▵','⧋','⧌','⧍','⧎','⧏','⧐','⧨','⧩','◁','◂','◢','◤','◥','◭','▷','▸','▹','▽','▾','▿','⚠','⏫','⏬','⏪','⏩'] },
+  lines:          { label: 'Line Symbols', chars: ['│','╽','╿','╏','║','╎','┇','┊','┋','┆','╵','╹','╻','╷','═','━','─','╍','┅','┉','┄','┈','╌','╴','╶','╸','╺','╼','╾','╳','╲','╱','‐','⁃','⎯'] },
+  math:           { label: 'Mathematical Symbols', chars: ['∀','∁','∂','∃','∄','∅','∆','∇','∈','∉','∊','∋','∌','∍','✖','∎','∏','➗','➖','➕','∐','∑','−','∓','∔','∕','∖','∗','∘','∙','√','∛','∜','∝','∞','∟','∠','∡','∢','∣','∤','∥','∦','∧','∨','∩','∪','∫','∬','∭','∮','π','∴','∵','∶','∷','∸','∹','∺','∻','∼','∽','∾','∿','≀','≁','≂','≃','≄','≅','≆','≇','≈','≉','≊','≋','≌','≍','≎','≏','≐','≑','≒','≓','≔','≕','≖','≗','≘','≙','≚','≛','≜','≝','≞','≟','≠','≡','≢','≣','≤','≥','≦','≧','≨','≩','≪','≫','≬','≭','≮','≯','≰','≱','≲','≳','≴','≵','≶','≷','≸','≹','≺','≻','≼','≽','≾','≿','⊀','⊁','⊂','⊃','⊄','⊅','⊆','⊇','⊈','⊉','⊊','⊋','⊌','⊍','⊎','⊏','⊐','⊑','⊒','⊓','⊔','⊕','⊖','⊗','⊘','⊙','⊚','⊛','⊜','⊝','⊞','⊟','⊠','⊡','⊢','⊣','⊤','⊥','⊦','⊧','⊨','⊩','⊪','⊫','⊬','⊭','⊮','⊯','⊰','⊱','⊲','⊳','⊴','⊵','⊶','⊷','⊸','⊹','⊺','⊻','⊼','⊽','⊾','⊿','⋀','⋁','⋂','⋃','⋄','⋅','⋆','⋇','⋈','⋉','⋊','⋋','⋌','⋍','⋎','⋏','⋐','⋑','⋒','⋓','⋔','⋕','⋖','⋗','⋘','⋙','⋚','⋛','⋜','⋝','⋞','⋟','⋠','⋡','⋢','⋣','⋤','⋥','⋦','⋧','⋨','⋩','⋪','⋫','⋬','⋭','⋮','⋯','⋰','⋱','➿'] },
+  currency:       { label: 'Currency Symbols', chars: ['$','£','€','ƒ','৳','в','₣','¥','₡','ლ','₵','₪','₹','₩','₭','₮','₦','₱','₲','฿','₺','₴','₫'] },
+  trademark:      { label: 'Trademark & Copyright', chars: ['™','®','©','℗','℠'] },
+  technical:      { label: 'Technical Symbols', chars: ['⏎','⇧','⏏','⌂','⌘','☢','☣','⎋','⌥','⌫','⌖','ϟ','㎎','㎏','㎜','㎝','㎞','㎡','㏄','㏎','㏑','㏒','㏕','Ω','Φ','℃','℉'] },
+  hands:          { label: 'Hand Symbols', chars: ['☚','☛','☜','☞','☟','☝','✌','✊','✋'] },
+  gender:         { label: 'Gender Symbols', chars: ['⚢','⚣','⚤','⚥','⚦','⚧','⚨','⚩'] },
+  recycle:        { label: 'Recycle Symbols', chars: ['♲','♳','♴','♵','♶','♷','♸','♹','♺','♻','♼','♽'] },
+  numbers_circle: { label: 'Circled Numbers', chars: ['⓪','①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩','⑪','⑫','⑬','⑭','⑮','⑯','⑰','⑱','⑲','⑳','⓿','➊','➋','➌','➍','➎','➏','➐','➑','➒','➓','⓫','⓬','⓭','⓮','⓯','⓰','⓱','⓲','⓳','⓴','⓵','⓶','⓷','⓸','⓹','⓺','⓻','⓼','⓽','⓾','⁰','⁴','⁵','⁶','⁷','⁸','⁹','₀','₁','₂','₃','₄','₅','₆','₇','₈','₉'] },
+  fractions:      { label: 'Fractions', chars: ['¼','½','¾','⁄','⅐','⅑','⅒','⅓','⅔','⅕','⅖','⅗','⅘','⅙','⅚','⅛','⅜','⅝','⅞','⅟','↉'] },
+};
+
+// Build "all symbols" combined
+SYMBOL_SETS.allsymbols = {
+  label: 'All Symbols Combined',
+  chars: Object.keys(SYMBOL_SETS).filter(k => k !== 'allsymbols').flatMap(k => SYMBOL_SETS[k].chars)
+};
+
+// ─────────────────────────────────────────────
+// BROWSER RENDER
+// ─────────────────────────────────────────────
+
+function onBrowserSelect() {
+  renderBrowser();
+}
+
+function updateBrowserLayout() {
+  const cols = document.getElementById('colSlider').value;
+  const size = document.getElementById('sizeSlider').value;
+  document.getElementById('colVal').textContent = cols;
+  document.getElementById('sizeVal').textContent = size + 'px';
+  applyBrowserLayout();
+  // Re-render if something is already shown (to apply new font size)
+  renderBrowser();
+}
+
+function applyBrowserLayout() {
+  const cols = document.getElementById('colSlider').value;
+  const size = document.getElementById('sizeSlider').value;
+  const grid = document.getElementById('charBrowserGrid');
+  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  // cell font size handled during render
+}
+
+function renderBrowser() {
+  const val = document.getElementById('browserSelect').value;
+  const grid = document.getElementById('charBrowserGrid');
+  const cols = parseInt(document.getElementById('colSlider').value);
+  const size = parseInt(document.getElementById('sizeSlider').value);
+
+  // Update display values
+  document.getElementById('colVal').textContent = cols;
+  document.getElementById('sizeVal').textContent = size + 'px';
+
+  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+  if (!val) {
+    grid.innerHTML = '<div class="browser-empty">Select a character set or symbol group above to browse.</div>';
+    return;
+  }
+
+  const [type, id] = val.split(':');
+
+  if (type === 'sym') {
+    renderSymbolBrowser(id, grid, size);
+  } else if (type === 'cs') {
+    renderCharsetBrowser(id, grid, size);
+  }
+}
+
+function renderSymbolBrowser(id, grid, size) {
+  const set = SYMBOL_SETS[id];
+  if (!set) return;
+  grid.innerHTML = '';
+
+  // Deduplicate
+  const unique = [...new Set(set.chars)];
+  unique.forEach(ch => {
+    grid.appendChild(makeCharCell(ch, size));
+  });
+}
+
+function renderCharsetBrowser(id, grid, size) {
+  const cs = CHARSETS.find(c => c.id === id);
+  if (!cs) return;
+  grid.innerHTML = '';
+
+  const sections = [
+    { label: 'Lowercase (a–z)', chars: [...cs.lower] },
+    { label: 'Uppercase (A–Z)', chars: [...cs.upper] },
+    { label: 'Numbers (1–9, 0)', chars: [...cs.nums] },
+  ];
+
+  sections.forEach(sec => {
+    // Section header spanning all columns
+    const header = document.createElement('div');
+    header.className = 'subsection-label';
+    header.textContent = sec.label;
+    grid.appendChild(header);
+
+    // Pair each converted char with its original
+    const origLower = 'abcdefghijklmnopqrstuvwxyz';
+    const origUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const origNums  = '1234567890';
+    let origArr;
+    if (sec.label.startsWith('Low')) origArr = [...origLower];
+    else if (sec.label.startsWith('Up')) origArr = [...origUpper];
+    else origArr = [...origNums];
+
+    sec.chars.forEach((ch, i) => {
+      const orig = origArr[i] ?? '';
+      grid.appendChild(makeCharCell(ch, size, orig));
+    });
+  });
+}
+
+function makeCharCell(ch, size, origLabel) {
+  const cell = document.createElement('div');
+  cell.className = 'char-cell';
+  cell.style.fontSize = size + 'px';
+  cell.style.minHeight = (size + 24) + 'px';
+  cell.textContent = ch;
+  if (origLabel) {
+    cell.title = `"${ch}" (${origLabel}) — click to copy`;
+  } else {
+    cell.title = `"${ch}" — click to copy`;
+  }
+  cell.onclick = () => copyCharCell(ch, cell);
+  return cell;
+}
+
+function copyCharCell(ch, cell) {
+  copyText(ch);
+  cell.classList.add('copied');
+  setTimeout(() => cell.classList.remove('copied'), 900);
+}
+</script>
+</body>
+</html>
